@@ -57,7 +57,7 @@ HTMLWidgets.widget({
     }
     strokecolor = colorrange[0];
 
-    // setup size, scales and axes
+    // setup size, scales and axe
 
     var margin = { top: params.top, right: params.right,
                    bottom: params.bottom, left: params.left };
