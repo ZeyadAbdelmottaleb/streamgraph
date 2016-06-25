@@ -156,17 +156,7 @@ HTMLWidgets.widget({
          .attr("d", function(d) { return area(d.values); })
          .style("fill", function(d, i) { return z(d.key); });
       
-      x.domain(d3.extent(data, function(d) { return d.date; }));
-      svg.selectAll(".x.axis").transition()
-      .duration(750)
-      .call(xAxis);
-
-      // Then transition the y-axis.
-      y.domain([y_min, d3.max(data, function(d) { return d.y0 + d.y; })]);
-      svg.selectAll(".y.axis").transition()
-      .duration(750)
-      .call(yAxis);
-  }
+    }
     
     
     // TODO legends for non-interactive
