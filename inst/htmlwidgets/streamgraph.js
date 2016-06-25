@@ -139,21 +139,7 @@ HTMLWidgets.widget({
 
     svg.selectAll(".layer")
        .data(layers)
-       .enter().append("path")
-       .attr("class", "layer")
-       .attr("d", function(d) { return area(d.values); })
-       .style("fill", function(d, i) { return z(d.key); });
-
-    svg.transition()
-       .data(layers)
-       .enter().append("path")
-       .attr("class", "layer")
-       .attr("d", function(d) { return area(d.values); })
-       .style("fill", function(d, i) { return z(d.key); });
-       
-    svg.exit().transition()
-       .data(layers)
-       .enter().append("path")
+       .transition().append("path")
        .attr("class", "layer")
        .attr("d", function(d) { return area(d.values); })
        .style("fill", function(d, i) { return z(d.key); });
