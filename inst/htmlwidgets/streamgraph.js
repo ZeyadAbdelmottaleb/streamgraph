@@ -141,6 +141,7 @@ HTMLWidgets.widget({
        .data(layers)
        .enter().append("path")
        .transition()
+       .duration(2500)
        .attr("class", "layer")
        .attr("d", function(d) { return area(d.values); })
        .style("fill", function(d, i) { return z(d.key); });
