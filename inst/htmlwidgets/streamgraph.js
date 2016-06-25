@@ -44,6 +44,9 @@ HTMLWidgets.widget({
     var colorrange = [];
     var tooltip ;
     var opacity = 0.33 ;
+    var t = d3.transition()
+    .duration(750)
+    .ease(d3.easeLinear);
 
     var ncols = d3.map(data, function(d) { return(d.key) }).keys().length;
     if (ncols <= 2) { ncols = 3 ; }
@@ -113,7 +116,7 @@ HTMLWidgets.widget({
 
     // build the final svg
 
-    var svg = d3.select("#" + el.id).append("svg")
+    var svg = d3.select("#" + el.id).append("svg").transition(t)
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
