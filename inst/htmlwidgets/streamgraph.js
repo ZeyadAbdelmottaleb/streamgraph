@@ -139,8 +139,8 @@ HTMLWidgets.widget({
 
     svg.selectAll(".layer")
        .data(layers)
-       .transition()
        .enter().append("path")
+       .transition()
        .attr("class", "layer")
        .attr("d", function(d) { return area(d.values); })
        .style("fill", function(d, i) { return z(d.key); });
