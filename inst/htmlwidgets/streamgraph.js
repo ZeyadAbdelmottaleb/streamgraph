@@ -143,8 +143,8 @@ HTMLWidgets.widget({
        .attr("class", "layer")
        .attr("d", function(d) { return area(d.values); })
        .style("fill", function(d, i) { return z(d.key); })
-       .transition(t)
-          .duration(2500);
+       .transition()
+        .duration(2500);
 
     // TODO legends for non-interactive
     // TODO add tracker vertical line
