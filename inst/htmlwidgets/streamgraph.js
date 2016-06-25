@@ -113,7 +113,7 @@ HTMLWidgets.widget({
 
     // build the final svg
 
-    var svg = d3.select("#" + el.id).append("svg").transition()
+    var svg = d3.select("#" + el.id).append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
@@ -135,8 +135,12 @@ HTMLWidgets.widget({
 
     dbgx = x ;
     dbgy = y ;
+    
+    var t = d3.transition()
+    .duration(750)
+    .ease(d3.easeLinear);
 
-    svg.selectAll(".layer")
+    svg.selectAll(".layer").transition(t)
        .data(layers)
        .enter().append("path")
        .attr("class", "layer")
