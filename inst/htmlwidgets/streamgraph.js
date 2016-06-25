@@ -142,13 +142,25 @@ HTMLWidgets.widget({
        .enter().append("path")
        .attr("class", "layer")
        .attr("d", function(d) { return area(d.values); })
-       .style("fill", function(d, i) { return z(d.key); })
-       .transition()
-        .duration(2500);
+       .style("fill", function(d, i) { return z(d.key); });
 
+    svg.transition()
+       .data(layers)
+       .enter().append("path")
+       .attr("class", "layer")
+       .attr("d", function(d) { return area(d.values); })
+       .style("fill", function(d, i) { return z(d.key); });
+       
+    svg.exit().transition()
+       .data(layers)
+       .enter().append("path")
+       .attr("class", "layer")
+       .attr("d", function(d) { return area(d.values); })
+       .style("fill", function(d, i) { return z(d.key); });
+    
     // TODO legends for non-interactive
     // TODO add tracker vertical line
-
+    
     if (params.interactive) {
 
       tooltip = svg.append("g")
