@@ -141,13 +141,31 @@ HTMLWidgets.widget({
        .data(layers)
        .enter().append("path")
        .transition()
-       .duration(2500)
+       .duration(750)
        .attr("class", "layer")
        .attr("d", function(d) { return area(d.values); })
        .style("fill", function(d, i) { return z(d.key); });
     
+    d3.selectAll("input").on("change", change);
+    console.log(d3.selectAll("input"));
+    function change() {
+      x.domain(d3.extent(data, function(d) { return d.date; }));
+      var t0 = svg.transition().duration(750);
+      t0.selectAll(".layer").attr("class", "layer");
+      t0.selectAll("d" , function(d) { return area(d.values); });
+
+      // Then transition the y-axis.
+      y.domain([y_min, d3.max(data, function(d) { return d.y0 + d.y; })]);
+      var t1 = t0.transition();
+      t1.selectAll(".line").attr("class", layer);
+      t1.selectAll("d" , function(d) { return area(d.values); });
+      t1.selectAll(".y.axis").call(yAxis);
+  }
+    
+    
     // TODO legends for non-interactive
     // TODO add tracker vertical line
+    
     
     if (params.interactive) {
 
