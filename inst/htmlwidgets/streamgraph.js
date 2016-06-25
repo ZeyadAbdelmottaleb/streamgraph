@@ -135,17 +135,16 @@ HTMLWidgets.widget({
 
     dbgx = x ;
     dbgy = y ;
-    
-    var t = d3.transition()
-    .duration(750)
-    .ease(d3.easeLinear);
 
-    svg.selectAll(".layer").transition(t)
+
+    svg.selectAll(".layer")
        .data(layers)
        .enter().append("path")
        .attr("class", "layer")
        .attr("d", function(d) { return area(d.values); })
-       .style("fill", function(d, i) { return z(d.key); });
+       .style("fill", function(d, i) { return z(d.key); })
+       .transition(t)
+          .duration(2500);
 
     // TODO legends for non-interactive
     // TODO add tracker vertical line
