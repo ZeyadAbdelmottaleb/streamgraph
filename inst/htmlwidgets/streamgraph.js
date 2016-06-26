@@ -146,10 +146,12 @@ HTMLWidgets.widget({
        .attr("d", function(d) { return area(d.values); })
        .style("fill", function(d, i) { return z(d.key); });
     
-    d3.selectAll("input").on("change", change);
+    $("input").on("change", change);
     
     function change() {
       svg.selectAll(".layer")
+         .exit
+         .remove
          .transition()
          .duration(750)
          .attr("class", "layer")
