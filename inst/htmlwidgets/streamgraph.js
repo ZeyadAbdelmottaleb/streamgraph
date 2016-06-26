@@ -145,19 +145,6 @@ HTMLWidgets.widget({
        .attr("class", "layer")
        .attr("d", function(d) { return area(d.values); })
        .style("fill", function(d, i) { return z(d.key); });
-  
-    function change() {
-      svg.selectAll(".layer")
-         .exit
-         .remove
-         .transition()
-         .duration(750)
-         .attr("class", "layer")
-         .attr("d", function(d) { return area(d.values); })
-         .style("fill", function(d, i) { return z(d.key); });
-      
-    }
-    $("input").on("change", change);
     
     
     // TODO legends for non-interactive
